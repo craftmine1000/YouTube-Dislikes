@@ -91,7 +91,7 @@ def main():
 	if os.path.exists(token_file):
 		credentials = Credentials.from_authorized_user_file(token_file, scopes)
 	# If there are no (valid) credentials available, let the user log in.
-	if not credentials and not credentials.valid:
+	if not credentials or not credentials.valid:
 		if credentials and credentials.expired and credentials.refresh_token:
 			credentials.refresh(Request())
 		else:
